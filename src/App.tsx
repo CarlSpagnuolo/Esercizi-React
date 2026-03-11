@@ -9,8 +9,18 @@
 //     </div>
 //   );
 // }
-import { Welcome } from "./Welcome";
+// import { Welcome } from "./Welcome";
+
+// export function App() {
+//   return <Welcome name="John" age={19} />;
+// }
+
+import { Counter } from "./Counter";
 
 export function App() {
-  return <Welcome name="John" age={19} />;
+  return (
+    <div>
+      <Counter initialValue={0} increment={1} />
+    </div>
+  );
 }
