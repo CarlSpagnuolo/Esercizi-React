@@ -15,12 +15,14 @@
 //   return <Welcome name="John" age={19} />;
 // }
 
+import { Clock } from "./Clock";
 import { Counter } from "./Counter";
 
 export function App() {
   return (
     <div>
       <Counter initialValue={0} increment={1} />
+      <Clock />
     </div>
   );
 }

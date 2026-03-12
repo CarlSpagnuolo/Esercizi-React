@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CounterDisplay } from "./CounterDisplay";
 
 type CounterProps = {
@@ -7,14 +7,20 @@ type CounterProps = {
 };
 export function Counter({ initialValue, increment }: CounterProps) {
   const [counter, setCounter] = useState(initialValue);
+  useEffect(() => {
+    console.log(counter);
+  }, [counter]);
+
   function counterIncrement() {
     setCounter((c) => c + increment);
   }
+
   function counterDecrease() {
     if (counter > 0) {
       setCounter((c) => c - increment);
     }
   }
+
   function counterReset() {
     setCounter((c) => (c = initialValue));
   }
