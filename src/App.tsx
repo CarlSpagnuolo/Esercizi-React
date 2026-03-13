@@ -19,6 +19,7 @@ import { Clock } from "./Clock";
 import { Counter } from "./Counter";
 import { MouseClicker } from "./MouseClicker";
 import { MultiButton } from "./MultiButton";
+import { UncontrolledLogin } from "./UncontrolledLogin";
 
 export function App() {
   return (
@@ -27,6 +28,7 @@ export function App() {
       <Clock />
       <MouseClicker />
       <MultiButton />
+      <UncontrolledLogin />
     </div>
   );
 }
