@@ -19,6 +19,7 @@ import { Clock } from "./Clock";
 import { Colors } from "./Colors";
 import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
+import { GithubUser } from "./GitHubUser";
 import { InteractiveWelcome } from "./InteractiveWelcome";
 import { Login } from "./Login";
 import { MouseClicker } from "./MouseClicker";
@@ -55,6 +56,7 @@ export function App() {
       <FocusableInput />
       <Colors items={items} />
       <TodoList />
+      <GithubUser username="CarlSpagnuolo" />
     </div>
   );
 }
