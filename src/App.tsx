@@ -23,6 +23,7 @@ import { InteractiveWelcome } from "./InteractiveWelcome";
 import { Login } from "./Login";
 import { MouseClicker } from "./MouseClicker";
 import { MultiButton } from "./MultiButton";
+import { TodoList } from "./ToDoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
 
 export type dataProps = {
@@ -53,6 +54,7 @@ export function App() {
       <Login onLogin={handleLogin} />
       <FocusableInput />
       <Colors items={items} />
+      <TodoList />
     </div>
   );
 }
