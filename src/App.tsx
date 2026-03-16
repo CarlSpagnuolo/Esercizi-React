@@ -16,6 +16,7 @@
 // }
 
 import { Clock } from "./Clock";
+import { Colors } from "./Colors";
 import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
 import { InteractiveWelcome } from "./InteractiveWelcome";
@@ -29,6 +30,14 @@ export type dataProps = {
   password: string;
   checkbox: boolean;
 };
+
+const items = [
+  { id: 1, name: "blue" },
+  { id: 2, name: "red" },
+  { id: 3, name: "yellow" },
+  { id: 4, name: "black" },
+];
+
 export function App() {
   function handleLogin(data: dataProps) {
     console.log("dati login:", data);
@@ -43,6 +52,7 @@ export function App() {
       <InteractiveWelcome />
       <Login onLogin={handleLogin} />
       <FocusableInput />
+      <Colors items={items} />
     </div>
   );
 }
