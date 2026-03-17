@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // Tipo delle props del componente
 // Il componente riceve una prop chiamata username
 
-type GithunUserProps = {
+type GithubUserProps = {
   username: string;
 };
 
@@ -22,7 +22,7 @@ type User = {
 // Componente React
 // Riceve username come prop
 
-export function GithubUser({ username }: GithunUserProps) {
+export function GithubUser({ username }: GithubUserProps) {
   // Stato dell'utente
   // All'inizio non ho ancora dati → null
   // Quando ricevo i dati dalla API li salverò qui

@@ -20,6 +20,7 @@ import { Colors } from "./Colors";
 import { Counter } from "./Counter";
 import { FocusableInput } from "./FocusableInput";
 import { GithubUser } from "./GitHubUser";
+import { GithubUsers } from "./GithubUsers";
 import { InteractiveWelcome } from "./InteractiveWelcome";
 import { Login } from "./Login";
 import { MouseClicker } from "./MouseClicker";
@@ -57,6 +58,7 @@ export function App() {
       <Colors items={items} />
       <TodoList />
       <GithubUser username="CarlSpagnuolo" />
+      <GithubUsers />
     </div>
   );
 }
