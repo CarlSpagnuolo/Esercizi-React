@@ -25,9 +25,15 @@ import { InteractiveWelcome } from "./InteractiveWelcome";
 import { Login } from "./Login";
 import { MouseClicker } from "./MouseClicker";
 import { MultiButton } from "./MultiButton";
+import { TestCounter } from "./TestCounter";
 import { TodoList } from "./ToDoList";
 import { UncontrolledLogin } from "./UncontrolledLogin";
-
+import { TestGithubUser } from "./TestGithubUser";
+import { useCounter } from "./useCounter";
+import { useForm } from "./useForm";
+import { useGithubUser } from "./useGithubUser";
+import { useCurrentLocation } from "./useCurrentLocation";
+import { useState } from "react";
 export type dataProps = {
   username: string;
   password: string;
@@ -42,9 +48,23 @@ const items = [
 ];
 
 export function App() {
+  const { form, handleChange } = useForm();
+  const { user, loadingUser, errorUser, fetchUser } = useGithubUser();
+  const { position, loading, error, getCurrentLocation } = useCurrentLocation();
+  const [counter, { onIncrement, onDecrement, onReset }] = useCounter();
+  const [githubUser, setGithubUser] = useState("");
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+  }
   function handleLogin(data: dataProps) {
     console.log("dati login:", data);
   }
+
+  function handleGithubUser() {
+    fetchUser(githubUser);
+  }
+
   return (
     <div>
       <Counter initialValue={0} increment={1} />
@@ -59,6 +79,56 @@ export function App() {
       <TodoList />
       <GithubUser username="CarlSpagnuolo" />
       <GithubUsers />
+      <TestCounter />
+      <TestGithubUser />
+      <div>
+        <button onClick={getCurrentLocation}>Cerca Posizione</button>
+        {loading && <p>Caricamento...</p>}
+        {error && <p>Errore nel caricamento:{error}</p>}
+        {position && (
+          <p>
+            Latitudine:{position.latitude}, Longitudine:{position.longitude}
+          </p>
+        )}
+        <h2>Ricerca Github User</h2>
+        <input
+          value={githubUser}
+          onChange={(e) => setGithubUser(e.target.value)}
+        ></input>
+        <button onClick={handleGithubUser}>Cerca Utente Github</button>
+        {loadingUser && <p>Caricamento...</p>}
+        {errorUser && <p>Errore nel caricamento:{errorUser}</p>}
+        {user && (
+          <div>
+            <img src={user.avatar_url} alt="userimg" />
+            <p>{user.name}</p>
+            <p>{user.login}</p>
+          </div>
+        )}
+        <button onClick={onIncrement}>INCREMENTA</button>
+        <button onClick={onDecrement}>DECREMENTA</button>
+        <button onClick={onReset}>RESET</button>
+        <p>{counter}</p>
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={handleChange}
+            value={form.email}
+            placeholder="email"
+            name="email"
+            type="email"
+            required
+          ></input>
+          <input
+            onChange={handleChange}
+            value={form.password}
+            placeholder="password"
+            name="password"
+            type="password"
+            required
+          ></input>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
     </div>
   );
 }
