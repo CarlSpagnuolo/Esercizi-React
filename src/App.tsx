@@ -34,6 +34,7 @@ import { useForm } from "./useForm";
 import { useGithubUser } from "./useGithubUser";
 import { useCurrentLocation } from "./useCurrentLocation";
 import { useState } from "react";
+import { TestUseGithubUser } from "./TestUseGithubUser";
 export type dataProps = {
   username: string;
   password: string;
@@ -81,6 +82,7 @@ export function App() {
       <GithubUsers />
       <TestCounter />
       <TestGithubUser />
+      <TestUseGithubUser />
       <div>
         <button onClick={getCurrentLocation}>Cerca Posizione</button>
         {loading && <p>Caricamento...</p>}
