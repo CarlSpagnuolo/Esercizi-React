@@ -1,3 +1,9 @@
 export function CounterDisplay({ count }) {
-  return <h2>{count}</h2>;
+  const CounterStyle = {
+    backgroundColor: "#333",
+    color: "yellow",
+    textAlign: "center" as const,
+  };
+
+  return <h2 style={CounterStyle}>{count}</h2>;
 }

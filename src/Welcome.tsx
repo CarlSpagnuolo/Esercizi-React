@@ -34,7 +34,12 @@
 // }
 type WelcomeProps = {
   name: string;
+  age: number;
 };
-export function Welcome({ name }: WelcomeProps) {
-  return <p>Welcome {name}!</p>;
+export function Welcome({ name, age }: WelcomeProps) {
+  return (
+    <p>
+      Welcome {name}! You are {age} years old!{" "}
+    </p>
+  );
 }

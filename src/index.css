@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.welcome {
+  background-color: springgreen;
+  border: 2px solid black;
+}

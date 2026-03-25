@@ -33,22 +33,39 @@ export function Login({ onLogin }: onLoginFix) {
       [name]: type === "checkbox" ? checked : value,
     });
   }
+
+  const loginButtonStyle = {
+    backgroundColor: dataLogin.password.length < 8 ? "red" : "green",
+    color: "white",
+    padding: "5px 10px",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    marginRight: "5px",
+  };
+
   return (
     <form onSubmit={handleLogin}>
       <div>
-        <label>Username</label>
+        <label htmlFor="username">Username</label>
         <input
           name="username"
           value={dataLogin.username}
-          type="text"
+          type="email"
           onChange={handleFormChange}
+          placeholder="Username"
+          required
         ></input>
+      </div>
+      <div>
         <label>Password</label>
         <input
           name="password"
           value={dataLogin.password}
           type="password"
           onChange={handleFormChange}
+          placeholder="Password"
+          required
         ></input>
         <label>Remember me!</label>
         <input
@@ -61,6 +78,7 @@ export function Login({ onLogin }: onLoginFix) {
       <button
         disabled={!dataLogin.username.trim() || !dataLogin.password.trim()}
         type="submit"
+        style={loginButtonStyle}
       >
         Login
       </button>

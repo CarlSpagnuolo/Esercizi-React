@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Clock.scss";
 
 export function Clock() {
   const [time, setTime] = useState("");
@@ -9,5 +10,5 @@ export function Clock() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-  return <h2>{time}</h2>;
+  return <h2 className="clock">{time}</h2>;
 }
