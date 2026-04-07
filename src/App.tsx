@@ -1,53 +1,99 @@
 import React from "react";
-import { Welcome } from "./Welcome";
-import { Counter } from "./Counter";
-import { Login } from "./Login";
-import { Clock } from "./Clock";
-import { UncontrolledLogin } from "./UncontrolledLogin";
-import { FocusableInput } from "./FocusableInput";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import { ReduxCounter } from "./ReduxCounter";
+import { ReduxTodos } from "./ReduxTodo";
+import { ReduxGithubUsers } from "./ReduxGithubUsers";
 
-export type dataProps = {
-  username: string;
-  password: string;
-  checkbox: boolean;
-};
-function handleLogin(data: dataProps) {
-  console.log("Dati ricevuti dal login:", data);
-}
-
-export function App() {
+function App() {
   return (
-    <div
-      style={{
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-        textAlign: "center",
-      }}
-    >
-      {/* Componente Welcome */}
-      <h1 className="welcome">
-        <Welcome name="John" age={19} />
-      </h1>
+    <Provider store={store}>
+      <div
+        style={{
+          maxWidth: "600px",
+          margin: "0 auto",
+          padding: "20px",
+        }}
+      >
+        <h1 style={{ textAlign: "center", marginBottom: "60px" }}>
+          Demo Redux Toolkit
+        </h1>
 
-      {/* Spazio tra i componenti */}
-      <hr style={{ margin: "20px 0" }} />
+        {/* Sezione Contatore */}
+        <section style={{ marginBottom: "60px" }}>
+          <ReduxCounter />
+        </section>
 
-      {/* Contatore con useCounter */}
-      <h2>Contatore con useCounter</h2>
-      <Counter initialValue={0} increment={1} />
+        {/* Sezione Todos */}
+        <section style={{ marginBottom: "60px" }}>
+          <ReduxTodos />
+        </section>
 
-      <hr style={{ margin: "20px 0" }} />
-
-      <Login onLogin={handleLogin} />
-
-      <hr style={{ margin: "20px 0" }} />
-
-      <Clock />
-      <UncontrolledLogin />
-      <FocusableInput />
-    </div>
+        {/* Sezione GitHub Users */}
+        <section style={{ marginBottom: "60px" }}>
+          <ReduxGithubUsers />
+        </section>
+      </div>
+    </Provider>
   );
 }
+
+export default App;
+
+// import { Welcome } from "./Welcome";
+// import { Counter } from "./Counter";
+// import { Login } from "./Login";
+// import { Clock } from "./Clock";
+// import { UncontrolledLogin } from "./UncontrolledLogin";
+// import { FocusableInput } from "./FocusableInput";
+// import { ReduxCounter } from "./reduxCounter";
+// import { Container } from "react-bootstrap";
+
+// export type dataProps = {
+//   username: string;
+//   password: string;
+//   checkbox: boolean;
+// };
+// function handleLogin(data: dataProps) {
+//   console.log("Dati ricevuti dal login:", data);
+// }
+
+// export function App() {
+//   return (
+//     <div
+//       style={{
+//         padding: "20px",
+//         fontFamily: "Arial, sans-serif",
+//         textAlign: "center",
+//       }}
+//     >
+//       {/* Componente Welcome */}
+//       <h1 className="welcome">
+//         <Welcome name="John" age={19} />
+//       </h1>
+
+//       {/* Spazio tra i componenti */}
+//       <hr style={{ margin: "20px 0" }} />
+
+//       {/* Contatore con useCounter */}
+//       <h2>Contatore con useCounter</h2>
+//       <Counter initialValue={0} increment={1} />
+
+//       <hr style={{ margin: "20px 0" }} />
+
+//       <Login onLogin={handleLogin} />
+
+//       <hr style={{ margin: "20px 0" }} />
+
+//       <Clock />
+//       <UncontrolledLogin />
+//       <FocusableInput />
+//       <Container title="Redux">
+//         <ReduxCounter />
+//       </Container>
+//     </div>
+//   );
+// }
 
 // import { Hello } from "./HelloWorld";
 // import { Welcome } from "./Welcome";
