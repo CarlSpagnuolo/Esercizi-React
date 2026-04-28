@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { GithubUser } from "./GitHubUser";
+import { GithubUser } from "./GithubUser";
+
+type GitHubUserType = {
+  id: number;
+  login: string;
+};
 
 export function GithubUsers() {
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [users, setUsers] = useState<GitHubUserType[]>([]);
+  const [selectedUser, setSelectedUser] = useState<string | null>(null);
+
   useEffect(() => {
     fetch("https://api.github.com/users")
       .then((response) => response.json())

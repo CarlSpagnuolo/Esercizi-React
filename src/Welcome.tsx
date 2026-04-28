@@ -34,7 +34,7 @@
 // }
 type WelcomeProps = {
   name: string;
-  age: number;
+  age?: number;
 };
 export function Welcome({ name, age }: WelcomeProps) {
   return (

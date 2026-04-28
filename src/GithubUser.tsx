@@ -73,6 +73,8 @@ export function GithubUser({ username }: GithubUserProps) {
 
   return (
     <div>
+      {!user && <h2>User not found!</h2>}
+
       {/* Nome dell'utente */}
       <h2>{user.name}</h2>
 

@@ -4,7 +4,15 @@ import { store } from "./store";
 import { ReduxCounter } from "./ReduxCounter";
 import { ReduxTodos } from "./ReduxTodo";
 import { ReduxGithubUsers } from "./ReduxGithubUsers";
+import { Link, Route, Routes } from "react-router-dom";
+import { ProvaRootContatore } from "./ProvaRootContatore";
+import { ProvaRootTodos } from "./store/ProvaRootTodos";
+import { ProvaRootGithubUsers } from "./ProvaRootGithubUsers";
 
+import { Welcome } from "./Welcome";
+import { Counter } from "./Counter";
+import { ShowGithubUser } from "./ShowGithubUser.tsx";
+import { GithubUserList } from "./GithubUserList.tsx";
 function App() {
   return (
     <Provider store={store}>
@@ -15,30 +23,72 @@ function App() {
           padding: "20px",
         }}
       >
-        <h1 style={{ textAlign: "center", marginBottom: "60px" }}>
-          Demo Redux Toolkit
-        </h1>
+        <Link to="/" className="underline text-blue-500 mx-2">
+          Benvenuto
+        </Link>
 
-        {/* Sezione Contatore */}
-        <section style={{ marginBottom: "60px" }}>
-          <ReduxCounter />
-        </section>
+        <Link to="/counter" className="underline text-blue-500 mx-2">
+          Counter
+        </Link>
 
-        {/* Sezione Todos */}
-        <section style={{ marginBottom: "60px" }}>
-          <ReduxTodos />
-        </section>
+        <Link to="/users" className="underline text-blue-500 mx-2">
+          Github Users
+        </Link>
 
-        {/* Sezione GitHub Users */}
-        <section style={{ marginBottom: "60px" }}>
-          <ReduxGithubUsers />
-        </section>
+        <Routes>
+          <Route path="/" element={<Welcome name="Carlo" age={28} />} />
+
+          <Route
+            path="/counter"
+            element={<Counter initialValue={0} increment={1} />}
+          />
+
+          <Route path="/users" element={<GithubUserList />}>
+            <Route
+              index
+              element={
+                <p className="text-gray-500 italic">
+                  Aggiungi un utente e selezionalo
+                </p>
+              }
+            />
+            <Route path=":username" element={<ShowGithubUser />} />
+          </Route>
+
+          <Route
+            path="*"
+            element={
+              <p className="text-3xl text-red-600 font-bold">Not Found</p>
+            }
+          />
+        </Routes>
       </div>
     </Provider>
   );
 }
 
 export default App;
+{
+  /* <h1 style={{ textAlign: "center", marginBottom: "60px" }}>
+          Demo Redux Toolkit
+        </h1>
+        <Link to="/" className="underline text-blue-500 mx-2">
+          Contatore
+        </Link>
+        <Link to="Todos-Root" className="underline text-blue-500 mx-2">
+          Todos
+        </Link>
+        <Link to="Github-Root" className="underline text-blue-500 mx-2">
+          Github Users
+        </Link> */
+}
+
+{
+  /* <Route path="/" element={<ProvaRootContatore />}></Route>
+          <Route path="Todos-Root" element={<ProvaRootTodos />}></Route>
+          <Route path="Github-Root" element={<ProvaRootGithubUsers />}></Route>
+          <Route path="user/:username" element={<GithubUserPage />}></Route> */
+}
 
 // import { Welcome } from "./Welcome";
 // import { Counter } from "./Counter";
