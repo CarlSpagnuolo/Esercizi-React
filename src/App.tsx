@@ -13,6 +13,7 @@ import { Welcome } from "./Welcome";
 import { Counter } from "./Counter";
 import { ShowGithubUser } from "./ShowGithubUser.tsx";
 import { GithubUserList } from "./GithubUserList.tsx";
+import { UncontrolledLogin } from "./UncontrolledLogin.tsx";
 function App() {
   return (
     <Provider store={store}>
@@ -62,6 +63,8 @@ function App() {
             }
           />
         </Routes>
+
+        <UncontrolledLogin />
       </div>
     </Provider>
   );
