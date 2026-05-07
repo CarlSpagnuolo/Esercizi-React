@@ -39,7 +39,7 @@ type WelcomeProps = {
 export function Welcome({ name, age }: WelcomeProps) {
   return (
     <p>
-      Welcome {name}! You are {age} years old!{" "}
+      Welcome {name}!{age !== undefined && ` You are ${age} years old!`}
     </p>
   );
 }
